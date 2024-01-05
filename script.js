@@ -1,3 +1,7 @@
+//Se importan funciones de otro archivo script
+import { llamar } from "./app.js";
+const otro = new llamar()
+
 //Se crean los elementos de la página web
 let body = document.querySelector('body');
 
@@ -6,7 +10,7 @@ let logo = document.createElement('img');
 logo.style.width = '300px';
 logo.style.height = '300px';
 logo.style.marginLeft = '100px';
-logo.src = '../images/KFC-logo-transparent-PNG.png';
+logo.src = '../images/KFC.png';
 
 //Se agrega la imagen al body
 body.appendChild(logo);
@@ -20,8 +24,6 @@ div.style.marginTop = '50px';
 let selector = document.createElement('div');
 selector.classList.add('selectores', 'd-flex', 'flex-direction-row', 'justify-content-around', 'mt-3');
 div.appendChild(selector);
-
-
 
 
 //option de cambiarIdioma
@@ -40,6 +42,7 @@ option3.textContent = 'Español';
 option3.id = 'idioma2';
 
 
+
 //select
 let select = document.createElement('select');
 select.classList.add('form-select');
@@ -52,6 +55,7 @@ select.appendChild(option3);
 
 //se añade el select cambiarIdioma al div prinicpal
 selector.appendChild(select);
+
 
 //select2
 let select2 = document.createElement('select');
@@ -85,6 +89,9 @@ select2.appendChild(rosa);
 //Segrega el segundo select al div selectores
 selector.appendChild(select2);
 
+
+
+
 //row
 let row = document.createElement('div');
 row.classList.add('row');
@@ -106,7 +113,7 @@ let objetoCartas = [
 
 
 for(let i = 0; i < 8; i++){
-    //col-md-3
+//col-md-3
 let division = document.createElement('div');
 division.classList.add('col-md-3','mb-3');
 row.appendChild(division);
@@ -162,3 +169,8 @@ boton.appendChild(parrafoBoton);
 
 body.appendChild(div);
 console.log(body);
+
+//Se llama nuevamente los id para darle la funcionalidad a los selectores de la página
+
+let este = document.getElementById("cambiarTema")
+este.addEventListener("change", otro.onChange)
