@@ -61,7 +61,7 @@ select2.id = 'cambiarTema';
 
 //primer option de cambiarTema
 let seleccionarTema = document.createElement('option');
-seleccionarTema.textContent = 'Seleccionar Idioma';
+seleccionarTema.textContent = 'Seleccionar Tema';
 
 //segundo option de CambiarTema
 let oscuro = document.createElement('option');
