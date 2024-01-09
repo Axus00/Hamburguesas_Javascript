@@ -8,14 +8,23 @@ export class llamar{
         let body = document.querySelector("body")
         //condicional para cambiar de color el fondo
         if(select2 == 'Oscuro'){
+            body.classList.add('theme-dark');
+            body.classList.remove('theme-light');
+            body.classList.remove('theme-pink');
             body.style.backgroundColor = "black";
-            localStorage.setItem('color', 'Oscuro');
+            localStorage.setItem('colorEscogido', 'Oscuro');
         } else if (select2 == 'Rosa'){
+            body.classList.add('theme-pink');
+            body.classList.remove('theme-dark');
+            body.classList.remove('theme-light');
             body.style.backgroundColor = "lightpink";
-            localStorage.setItem('color', 'lightpink');
+            localStorage.setItem('colorEscogido', 'Rosa');
         } else if(select2 == 'Claro'){
+            body.classList.add('theme-light');
+            body.classList.add('theme-pink');
+            body.classList.add('theme-dark');
             body.style.backgroundColor = "lightyellow";
-            localStorage.setItem('color', 'lightyellow');
+            localStorage.setItem('colorEscogido', 'Claro');
         }
     
         event.preventDefault();
@@ -30,18 +39,27 @@ export class llamar{
 
 //guardar el color
 try{
-    const color = localStorage.getItem('color');
+    const color = localStorage.getItem('colorEscogido');
     console.log(color)
 
     if(color === 'Oscuro'){
+        body.classList.add('theme-dark');
+        body.classList.remove('theme-light');
+        body.classList.remove('theme-pink');
         body.style.backgroundColor = "black";
         console.log("a");
     }
     else if(color === 'Rosa'){
+        body.classList.add('theme-pink');
+        body.classList.remove('theme-dark');
+        body.classList.remove('theme-light');
         body.style.backgroundColor = "lightpink";
         console.log("b");
     } 
     else if(color === 'Claro'){
+        body.classList.add('theme-light');
+        body.classList.add('theme-pink');
+        body.classList.add('theme-dark');
         body.style.backgroundColor = "lightyellow";
         console.log("c");
     };
@@ -49,3 +67,7 @@ try{
 
 
 //FUncionalidad para cambiar idioma de la web
+//Objeto para el cambio de idioma
+
+
+

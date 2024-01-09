@@ -4,6 +4,8 @@ import { llamar } from "./app.js";
 const otro = new llamar()
 
 
+
+
 //Se crean los elementos de la página web
 let body = document.querySelector('body');
 
@@ -144,13 +146,13 @@ card2.appendChild(precio);
 
 //h1
 let nombre = document.createElement('h1');
-nombre.id = 'nombre';
+nombre.id = 'nombre' + [i];
 nombre.textContent = objetoCartas[i % objetoCartas.length].nombre;
 card2.appendChild(nombre)
 
 //p
 let parrafo = document.createElement('p');
-parrafo.id = 'parrafo';
+parrafo.id = 'parrafo' + [i];
 parrafo.textContent = objetoCartas[i % objetoCartas.length].descripcion;
 card2.appendChild(parrafo);
 
@@ -166,6 +168,7 @@ card2.appendChild(boton);
 
 //Párrafo del botón
 let parrafoBoton = document.createElement('p');
+parrafoBoton.id = 'parrafoBoton';
 parrafoBoton.textContent = 'Comprar';
 boton.appendChild(parrafoBoton);
 }
@@ -178,6 +181,109 @@ console.log(body);
 let este = document.getElementById("cambiarTema");
 este.addEventListener("change", otro.onChange);
 
+
+
+// Agregar el evento onchange al elemento input
+let este2 = document.getElementById("cambiarIdioma");
+cambiarIdioma.onChange = function (){
+    idioma();
+};
+
+
+
+
+function idioma(event){
+    console.log("hola");
+    // Event listener para cambiar el idioma cuando se selecciona otro idioma
+    //Se obtienen los datos para las traducciones
+    //parrafos
+    let traduccion1 = document.getElementById('parrafo0');
+    let traduccion2 = document.getElementById('parrafo1');
+    let traduccion3 = document.getElementById('parrafo2');
+    let traduccion4 = document.getElementById('parrafo3');
+    let traduccion5 = document.getElementById('parrafo4');
+    let traduccion6 = document.getElementById('parrafo5');
+    let traduccion7 = document.getElementById('parrafo6');
+    let traduccion8 = document.getElementById('parrafo7');
+
+    let traducciones = {
+        traduccionEspañol: {
+             en: {
+                  parrafo0: 'BBQ Crunch Sandwich (1 breaded chicken fillet)',
+                  parrafo1: '1 Kentucky hamburger / Sandwich (1 breaded chicken breast fillet, pickles...)',
+                  parrafo2: '1 BBQ Crunch Sandwich (1 Breaded Chicken Fillet) + 1 Small Potato + 1 PET Soda...',
+                  parrafo3: '1 Kentucky Colonel Burger / Sandwich (1 Breaded Chicken Breast Fillet, Salad...)',
+                  parrafo4: '1 Kentucky hamburger / Sandwich (1 breaded chicken breast fillet, pickles...)',
+                  parrafo5: '1 Kentucky Coronelhamburger / Sandwich (1 Breaded Chicken Breast Fillet, Salad...)',
+                  parrafo6: '1 Crispy BBQ Sandwich (1 extra large breast fillet, triple breaded, crispy onion...)',
+                  parrafo7: '1 Crispy BBQ Sandwich (1 extra large breast fillet, triple breaded, crispy onion...)'
+             },
+             es: {
+                  parrafo0:'Sandwich BBQ Crunch (1 filete de pollo apanado)',
+                  parrafo1:'1 Kentucky hamburguesa / Sandwich (1 Filete de pechuga de pollo apanado, pepinillos...)',
+                  parrafo2:'1 Sandwich BBQ Crunch (1 Filete de pollo apanado) + 1 Papa Pequeña + 1 Gaseosa PET...',
+                  parrafo3:'1 Kentucky Coronel hamburguesa / Sandwich (1 Filete de pechuga de pollo apanado, Ensalada...)',
+                  parrafo4:'1 Kentucky hamburguesa / Sandwich (1 Filete de pechuga de pollo apanado, pepinillos...)',
+                  parrafo5:'1 Kentucky Coronelhamburguesa / Sandwich (1 Filete de pechuga de pollo apanado, Ensalada...)',
+                  parrafo6:'1 Sandwich Crispy BBQ (1 Filete de pechuga extra grande, triple empanizado, cebolla crisp...)',
+                  parrafo7:'1 Sandwich Crispy BBQ (1 Filete de pechuga extra grande, triple empanizado, cebolla crisp...)'
+             },
+        },
+    };
+
+
+
+    if(select.value === 'Español'){
+    traduccion1.innerText = traducciones.traduccionEspañol.es.parrafo0;
+    traduccion2.innerText = traducciones.traduccionEspañol.es.parrafo1;
+    traduccion3.innerText = traducciones.traduccionEspañol.es.parrafo2;
+    traduccion4.innerText = traducciones.traduccionEspañol.es.parrafo3;
+    traduccion5.innerText = traducciones.traduccionEspañol.es.parrafo4;
+    traduccion6.innerText = traducciones.traduccionEspañol.es.parrafo5;
+    traduccion7.innerText = traducciones.traduccionEspañol.es.parrafo6;
+    traduccion8.innerText = traducciones.traduccionEspañol.es.parrafo7;
+    localStorage.setItem('opcionEscogida', 'Español');
+    } else if (select.value === 'Ingles'){
+    traduccion1.innerText = traducciones.traduccionEspañol.en.parrafo0;
+    traduccion2.innerText = traducciones.traduccionEspañol.en.parrafo1;
+    traduccion3.innerText = traducciones.traduccionEspañol.en.parrafo2;
+    traduccion4.innerText = traducciones.traduccionEspañol.en.parrafo3;
+    traduccion5.innerText = traducciones.traduccionEspañol.en.parrafo4;
+    traduccion6.innerText = traducciones.traduccionEspañol.en.parrafo5;
+    traduccion7.innerText = traducciones.traduccionEspañol.en.parrafo6;
+    traduccion8.innerText = traducciones.traduccionEspañol.en.parrafo7;
+    localStorage.setItem('opcionEscogida', 'Ingles');
+    };
+
+
+    //almacenar el idioma
+    let seleccion = localStorage.getItem('opcionEscogida')
+    try{
+    if(seleccion === 'Español'){
+            traduccion1.innerText = traducciones.traduccionEspañol.es.parrafo0;
+            traduccion2.innerText = traducciones.traduccionEspañol.es.parrafo1;
+            traduccion3.innerText = traducciones.traduccionEspañol.es.parrafo2;
+            traduccion4.innerText = traducciones.traduccionEspañol.es.parrafo3;
+            traduccion5.innerText = traducciones.traduccionEspañol.es.parrafo4;
+            traduccion6.innerText = traducciones.traduccionEspañol.es.parrafo5;
+            traduccion7.innerText = traducciones.traduccionEspañol.es.parrafo6;
+            traduccion8.innerText = traducciones.traduccionEspañol.es.parrafo7;
+    } else if (seleccion === 'Inglés') {
+            traduccion1.innerText = traducciones.traduccionEspañol.en.parrafo0;
+            traduccion2.innerText = traducciones.traduccionEspañol.en.parrafo1;
+            traduccion3.innerText = traducciones.traduccionEspañol.en.parrafo2;
+            traduccion4.innerText = traducciones.traduccionEspañol.en.parrafo3;
+            traduccion5.innerText = traducciones.traduccionEspañol.en.parrafo4;
+            traduccion6.innerText = traducciones.traduccionEspañol.en.parrafo5;
+            traduccion7.innerText = traducciones.traduccionEspañol.en.parrafo6;
+            traduccion8.innerText = traducciones.traduccionEspañol.en.parrafo7;
+    }
+    event.preventDefault();
+    }catch{}
+
+};
+select.addEventListener('change', este2.onChange);
+    
 
 
 
